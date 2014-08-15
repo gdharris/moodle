@@ -2926,7 +2926,7 @@ function calendar_add_icalendar_event($event, $courseid, $subscriptionid) {
             'UTC';
     $eventrecord->timestart = strtotime($event->properties['DTSTART'][0]->value . ' ' . $tz);
     if (empty($event->properties['DTEND'])) {
-        $eventrecord->timeduration = 3600; // one hour if no end time specified
+        $eventrecord->timeduration = 0; // no duration if no end time specified
     } else {
         $endtz = isset($event->properties['DTEND'][0]->parameters['TZID']) ? $event->properties['DTEND'][0]->parameters['TZID'] :
                 'UTC';
